@@ -37,17 +37,14 @@ art = '''⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿�
 ⡄⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⢿⣿⣿⣿⣿⣿⣿⣿⣿⡆⢻⣿⣿⣿⣷⣭⣛⠻⠿⠿⠿⠿⠿⢛⣫⣴⣿⣿⣿⠇⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠹⣿⣿⣿⣿⣿⣿⣿⣿⡌⠿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⢿⢿⣿⣿⣿⡿⠏⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿'''
 
-replaybool = True
 print('\nNumber guessing game by Jun Hoe')
 
-while replaybool == True:
+while True:
     
-    print('Give a maximum value')
+    print('\nGive a maximum value')
     maxvalue = int(input())
     x = random.randint(0, maxvalue)
-    print('''\nGood Luck
-
-Guess the number:''')
+    print('\nGood Luck\n\nGuess the number:')
 
     while True:
         userinput = int(input())
