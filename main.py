@@ -37,32 +37,68 @@ art = '''⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿�
 ⡄⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⢿⣿⣿⣿⣿⣿⣿⣿⣿⡆⢻⣿⣿⣿⣷⣭⣛⠻⠿⠿⠿⠿⠿⢛⣫⣴⣿⣿⣿⠇⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠹⣿⣿⣿⣿⣿⣿⣿⣿⡌⠿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⢿⢿⣿⣿⣿⡿⠏⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿'''
 
-print('\nNumber guessing game by Jun Hoe')
+
+print('\n---Number guessing game by Jun Hoe---\n')
+easybool = False
+hardbool = False
 
 while True:
-    
+    while True:
+        mode = input('Select mode [easy] [hard]:\n')
+        if mode == ('e' or 'easy'):
+            easybool = True
+            hardbool = False
+            break
+        elif mode == ('h' or 'hard'):
+            easybool = False
+            hardbool = True
+            break
+        else:
+            hardbool = easybool = False
+            print('Please choose one\n')
+        
+    lives = 5
     print('\nGive a maximum value')
     maxvalue = int(input())
     x = random.randint(0, maxvalue)
-    print('\nGood Luck\n\nGuess the number:')
+    print('''\nGood Luck\n\nGuess a number:''')
 
-    while True:
+    while easybool:
         userinput = int(input())
         if userinput == 67 and userinput != x:
             print(art)
         match x:
             case _ if userinput < x:
-               print('higher')
+                print('higher\n')
             case _ if userinput > x:
-                print('lower')
+                print('lower\n')
             case _ if userinput == x:
                 print('You won!')
                 break
-        print('')
-    replayinput = input("Play again? (y/n) : ")
+
+    while hardbool:
+        print(f'lives = {lives}')
+        userinput = int(input())
+        if userinput == 67 and userinput != x:
+            print(art)
+        match x:
+            case _ if userinput < x:
+                print('higher\n')
+                lives -= 1
+            case _ if userinput > x:
+                print('lower\n')
+                lives -= 1
+            case _ if userinput == x:
+                print('\nYou won!')
+                break
+        if lives == 0:
+            print('\nOut of lives :(')
+            print(f'It was {x}\n')
+            break
+    replayinput = input("\nPlay again? (y/n) : ")
     print('')
     if replayinput == 'y':
         continue
     elif replayinput == 'n':
+        print('Bye')
         break
-    
