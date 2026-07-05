@@ -61,34 +61,46 @@ while True:
     print('\nGive a maximum value')
     maxvalue = int(input())
     x = random.randint(0, maxvalue)
-    print('''\nGood Luck\n\nGuess a number:''')
+    print('\nGood Luck\n\nGuess a number:\n')
 
     while easybool:
-        userinput = int(input())
-        if userinput == 67 and userinput != x:
+        userinput = input()
+        try:
+            global numbereasy
+            numbereasy = int(userinput)
+        except:
+            print('Please type a number\n')
+            continue
+        if numbereasy == 67 and numbereasy != x:
             print(art)
         match x:
-            case _ if userinput < x:
+            case _ if numbereasy < x:
                 print('higher\n')
-            case _ if userinput > x:
+            case _ if numbereasy > x:
                 print('lower\n')
-            case _ if userinput == x:
+            case _ if numbereasy == x:
                 print('You won!')
                 break
 
     while hardbool:
         print(f'lives = {lives}')
-        userinput = int(input())
-        if userinput == 67 and userinput != x:
+        userinput = input()
+        try:
+            global numberhard
+            numberhard = int(userinput)
+        except:
+            print('Please type a number\n')
+            continue
+        if numberhard == 67 and numberhard != x:
             print(art)
         match x:
-            case _ if userinput < x:
+            case _ if numberhard < x:
                 print('higher\n')
                 lives -= 1
-            case _ if userinput > x:
+            case _ if numberhard > x:
                 print('lower\n')
                 lives -= 1
-            case _ if userinput == x:
+            case _ if numberhard == x:
                 print('\nYou won!')
                 break
         if lives == 0:
@@ -102,3 +114,4 @@ while True:
     elif replayinput == 'n':
         print('Bye')
         break
+
