@@ -25,7 +25,7 @@ hardbool = False
 
 while True:
 	while True:
-		mode = input('Select mode [easy] [hard]:\n')
+		mode = input('Select mode [easy] [hard]:\n').strip().lower()
 		if mode == 'e' or mode == 'easy':
 			easybool = True
 			hardbool = False
@@ -41,7 +41,7 @@ while True:
 	lives = 5
 	while True:
 		print('\nGive a maximum value')
-		inputmaxvalue = input()
+		inputmaxvalue = input().strip().lower()
 		try:
 			global maxvalue
 			maxvalue = int(inputmaxvalue)
@@ -52,7 +52,7 @@ while True:
 	print('\nGood Luck\n\nGuess a number:\n')
 
 	while easybool:
-		userinput = input()
+		userinput = input().strip().lower()
 		if userinput == 'exit' or userinput == 'quit':
 			break
 		try:
@@ -74,7 +74,7 @@ while True:
 
 	while hardbool:
 		print(f'lives = {lives}')
-		userinput = input()
+		userinput = input().lower().strip()
 		if userinput == 'exit' or userinput == 'quit':
 			break
 		try:
